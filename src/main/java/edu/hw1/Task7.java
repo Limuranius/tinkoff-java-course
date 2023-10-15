@@ -3,7 +3,7 @@ package edu.hw1;
 public class Task7 {
     public static int rotateRight(int number, int shiftSize) {
         int bitCount = countBits(number);
-        shiftSize %= bitCount;
+        shiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
         int remainSize = bitCount - shiftSize;
 
         int shiftedPartMask = (1 << shiftSize) - 1;
@@ -13,7 +13,7 @@ public class Task7 {
 
     public static int rotateLeft(int number, int shiftSize) {
         int bitCount = countBits(number);
-        shiftSize %= bitCount;
+        shiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
         int remainSize = bitCount - shiftSize;
 
         int shiftedPartMask = ((1 << shiftSize) - 1) << remainSize;

@@ -32,4 +32,18 @@ public class Task7Test {
         assertThat(Task7.rotateLeft(17, 2))
             .isEqualTo(6);
     }
+
+    @Test
+    @DisplayName("Negative rotate left")
+    void negativeLeft() {
+        assertThat(Task7.rotateLeft(55, -1))
+            .isEqualTo(59);
+    }
+
+    @Test
+    @DisplayName("Negative rotate right")
+    void negativeRight() {
+        assertThat(Task7.rotateRight(69, -2))
+            .isEqualTo(22);
+    }
 }
