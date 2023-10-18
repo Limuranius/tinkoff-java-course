@@ -2,7 +2,7 @@ package edu.hw1;
 
 public final class Task5 {
     static final int SINGLE_DIGIT_MOVE = 10;
-    static final int DOUBLE_DIGIT_MOVE = 10;
+    static final int DOUBLE_DIGIT_MOVE = 100;
     static final int MIN_DOUBLE_DIGIT_NUM = 10;
 
     private Task5() {
