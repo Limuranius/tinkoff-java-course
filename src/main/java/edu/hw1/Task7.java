@@ -1,30 +1,34 @@
 package edu.hw1;
 
-public class Task7 {
+public final class Task7 {
+    private Task7() {
+    }
+
     public static int rotateRight(int number, int shiftSize) {
         int bitCount = countBits(number);
-        shiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
-        int remainSize = bitCount - shiftSize;
+        int normalizedShiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
+        int remainSize = bitCount - normalizedShiftSize;
 
-        int shiftedPartMask = (1 << shiftSize) - 1;
+        int shiftedPartMask = (1 << normalizedShiftSize) - 1;
         int shiftedPart = number & shiftedPartMask;
-        return (number >> shiftSize) | (shiftedPart << remainSize);
+        return (number >> normalizedShiftSize) | (shiftedPart << remainSize);
     }
 
     public static int rotateLeft(int number, int shiftSize) {
         int bitCount = countBits(number);
-        shiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
-        int remainSize = bitCount - shiftSize;
+        int normalizedShiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
+        int remainSize = bitCount - normalizedShiftSize;
 
-        int shiftedPartMask = ((1 << shiftSize) - 1) << remainSize;
+        int shiftedPartMask = ((1 << normalizedShiftSize) - 1) << remainSize;
         int shiftedPart = (number & shiftedPartMask) >> remainSize;
-        return ((number << shiftSize) | shiftedPart) & ((1 << bitCount) - 1);
+        return ((number << normalizedShiftSize) | shiftedPart) & ((1 << bitCount) - 1);
     }
 
     public static int countBits(int number) {
         int count = 0;
-        while (number != 0) {
-            number >>= 1;
+        int remainingBits = number;
+        while (remainingBits != 0) {
+            remainingBits >>= 1;
             count++;
         }
         return count;

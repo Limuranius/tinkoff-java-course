@@ -1,16 +1,24 @@
 package edu.hw1;
 
-public class Task5 {
+public final class Task5 {
+    static final int SINGLE_DIGIT_MOVE = 10;
+    static final int DOUBLE_DIGIT_MOVE = 10;
+    static final int MIN_DOUBLE_DIGIT_NUM = 10;
+
+    private Task5() {
+    }
+
     public static boolean isPalindromeDescendant(int number) {
         if (number < 0) {
             return false;
         }
+        int currNumber = number;
         do {
-            if (isPalindrome(number)) {
+            if (isPalindrome(currNumber)) {
                 return true;
             }
-            number = descend(number);
-        } while (number > 9);
+            currNumber = descend(currNumber);
+        } while (currNumber >= MIN_DOUBLE_DIGIT_NUM);
         return false;
     }
 
@@ -18,38 +26,40 @@ public class Task5 {
         int leftPart = number;
         int rightPart = 0;
         while (leftPart > rightPart) {
-            rightPart *= 10;
-            rightPart += leftPart % 10;
-            leftPart /= 10;
+            rightPart *= SINGLE_DIGIT_MOVE;
+            rightPart += leftPart % SINGLE_DIGIT_MOVE;
+            leftPart /= SINGLE_DIGIT_MOVE;
         }
-        return (leftPart == rightPart) || (rightPart / 10 == leftPart);
+        return (leftPart == rightPart) || (rightPart / SINGLE_DIGIT_MOVE == leftPart);
     }
 
     static int descend(int number) {
         int digitCount = Task2.countDigits(number);
         int pairsCount = (digitCount + 1) / 2;
         int[] digitPairs = new int[pairsCount];
+        int currNumber = number;
         if (digitCount % 2 == 1) {
-            digitPairs[pairsCount - 1] = (number % 10) * 10;
-            number /= 10;
+            digitPairs[pairsCount - 1] = (currNumber % SINGLE_DIGIT_MOVE) * SINGLE_DIGIT_MOVE;
+            currNumber /= SINGLE_DIGIT_MOVE;
         } else {
-            digitPairs[pairsCount - 1] = number % 100;
-            number /= 100;
+            digitPairs[pairsCount - 1] = currNumber % DOUBLE_DIGIT_MOVE;
+            currNumber /= DOUBLE_DIGIT_MOVE;
         }
         for (int i = pairsCount - 2; i >= 0; i--) {
-            digitPairs[i] = number % 100;
-            number /= 100;
+            digitPairs[i] = currNumber % DOUBLE_DIGIT_MOVE;
+            currNumber /= DOUBLE_DIGIT_MOVE;
         }
 
         int result = 0;
         for (int digitPair : digitPairs) {
-            int d1 = digitPair / 10;
-            int d2 = digitPair % 10;
+            int d1 = digitPair / SINGLE_DIGIT_MOVE;
+            int d2 = digitPair % SINGLE_DIGIT_MOVE;
             int digitSum = d1 + d2;
-            if (digitSum > 10) {
-                result = result * 100 + digitSum;
+            final int DOUBLE_DIGIT_NUMBER = 10;
+            if (digitSum > DOUBLE_DIGIT_NUMBER) {
+                result = result * DOUBLE_DIGIT_MOVE + digitSum;
             } else {
-                result = result * 10 + digitSum;
+                result = result * SINGLE_DIGIT_MOVE + digitSum;
             }
         }
         return result;

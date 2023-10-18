@@ -3,9 +3,14 @@ package edu.hw1;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Task6 {
+public final class Task6 {
+    private Task6() {
+    }
+
+    static final int KAPREKAR_NUMBER = 6174;
+
     public static int countK(int number) {
-        if (number == 6174) {
+        if (number == KAPREKAR_NUMBER) {
             return 0;
         }
         return 1 + countK(descDigits(number) - ascDigits(number));
@@ -22,8 +27,9 @@ public class Task6 {
 
     private static int digitsArrToInt(Integer[] digits) {
         int result = 0;
-        for (int digit: digits) {
-            result = result * 10 + digit;
+        final int MOVE_DIGIT = 10;
+        for (int digit : digits) {
+            result = result * MOVE_DIGIT + digit;
         }
         return result;
     }
