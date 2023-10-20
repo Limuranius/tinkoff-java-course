@@ -44,4 +44,104 @@ public class Task6Test {
 
         assertThat(count).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("1111")
+    void test_5() {
+        int number = 1111;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("9999")
+    void test_6() {
+        int number = 9999;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("9998")
+    void test_7() {
+        int number = 9998;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("1000")
+    void test_8() {
+        int number = 1000;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("999")
+    void test_9() {
+        int number = 999;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("50")
+    void test_10() {
+        int number = 50;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("1")
+    void test_11() {
+        int number = 1;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("0")
+    void test_12() {
+        int number = 0;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("-100")
+    void test_13() {
+        int number = -100;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("-5694")
+    void test_14() {
+        int number = -5694;
+
+        int count = Task6.countK(number);
+
+        assertThat(count).isEqualTo(-1);
+    }
 }
