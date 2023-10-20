@@ -46,4 +46,32 @@ public class Task7Test {
         assertThat(Task7.rotateRight(69, -2))
             .isEqualTo(22);
     }
+
+    @Test
+    @DisplayName("Rotate 0 to left")
+    void rotateZeroLeft() {
+        assertThat(Task7.rotateLeft(0, 5))
+            .isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("Rotate 0 to right")
+    void rotateZeroRight() {
+        assertThat(Task7.rotateRight(0, 5))
+            .isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("Rotate by 0 to left")
+    void rotateByZeroLeft() {
+        assertThat(Task7.rotateLeft(123, 0))
+            .isEqualTo(123);
+    }
+
+    @Test
+    @DisplayName("Rotate by 0 to right")
+    void rotateByZeroRight() {
+        assertThat(Task7.rotateRight(123, 0))
+            .isEqualTo(123);
+    }
 }

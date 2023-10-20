@@ -5,6 +5,11 @@ public final class Task7 {
     }
 
     public static int rotateRight(int number, int shiftSize) {
+        if (number < 0) {
+            return -1;
+        } else if (number == 0) {
+            return 0;
+        }
         int bitCount = countBits(number);
         int normalizedShiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
         int remainSize = bitCount - normalizedShiftSize;
@@ -15,6 +20,11 @@ public final class Task7 {
     }
 
     public static int rotateLeft(int number, int shiftSize) {
+        if (number < 0) {
+            return -1;
+        } else if (number == 0) {
+            return 0;
+        }
         int bitCount = countBits(number);
         int normalizedShiftSize = ((shiftSize % bitCount) + bitCount) % bitCount;
         int remainSize = bitCount - normalizedShiftSize;
@@ -24,7 +34,7 @@ public final class Task7 {
         return ((number << normalizedShiftSize) | shiftedPart) & ((1 << bitCount) - 1);
     }
 
-    public static int countBits(int number) {
+    private static int countBits(int number) {
         int count = 0;
         int remainingBits = number;
         while (remainingBits != 0) {
