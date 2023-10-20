@@ -6,61 +6,27 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task5Test {
     @Test
-    @DisplayName("isPalindrome: numbers with even length")
-    void isPalindromeEvenLen() {
-        assertThat(Task5.isPalindrome(2442))
+    @DisplayName("Palindromes with even length")
+    void palindromeEvenLen() {
+        assertThat(Task5.isPalindromeDescendant(2442))
             .isEqualTo(true);
-        assertThat(Task5.isPalindrome(4422))
-            .isEqualTo(false);
-        assertThat(Task5.isPalindrome(22))
+        assertThat(Task5.isPalindromeDescendant(22))
             .isEqualTo(true);
-        assertThat(Task5.isPalindrome(13))
-            .isEqualTo(false);
+        assertThat(Task5.isPalindromeDescendant(3333))
+            .isEqualTo(true);
     }
 
     @Test
-    @DisplayName("isPalindrome: numbers with odd length")
+    @DisplayName("Palindromes with odd length")
     void isPalindromeOddLen() {
-        assertThat(Task5.isPalindrome(24542))
+        assertThat(Task5.isPalindromeDescendant(24542))
             .isEqualTo(true);
-        assertThat(Task5.isPalindrome(44122))
-            .isEqualTo(false);
-        assertThat(Task5.isPalindrome(232))
+        assertThat(Task5.isPalindromeDescendant(232))
             .isEqualTo(true);
-        assertThat(Task5.isPalindrome(113))
-            .isEqualTo(false);
-        assertThat(Task5.isPalindrome(1))
+        assertThat(Task5.isPalindromeDescendant(1))
             .isEqualTo(true);
-        assertThat(Task5.isPalindrome(0))
+        assertThat(Task5.isPalindromeDescendant(0))
             .isEqualTo(true);
-    }
-
-    @Test
-    @DisplayName("descend: numbers with even length")
-    void descendEvenLen() {
-        assertThat(Task5.descend(2244))
-            .isEqualTo(48);
-        assertThat(Task5.descend(1854))
-            .isEqualTo(99);
-        assertThat(Task5.descend(11223344))
-            .isEqualTo(2468);
-        assertThat(Task5.descend(55))
-            .isEqualTo(10);
-        assertThat(Task5.descend(567899))
-            .isEqualTo(111518);
-    }
-
-    @Test
-    @DisplayName("descend: numbers with odd length")
-    void descendOddLen() {
-        assertThat(Task5.descend(1))
-            .isEqualTo(1);
-        assertThat(Task5.descend(111))
-            .isEqualTo(21);
-        assertThat(Task5.descend(979))
-            .isEqualTo(169);
-        assertThat(Task5.descend(100))
-            .isEqualTo(10);
     }
 
     @Test

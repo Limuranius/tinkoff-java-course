@@ -22,7 +22,7 @@ public final class Task5 {
         return false;
     }
 
-    static boolean isPalindrome(int number) {
+    private static boolean isPalindrome(int number) {
         int leftPart = number;
         int rightPart = 0;
         while (leftPart > rightPart) {
@@ -33,7 +33,7 @@ public final class Task5 {
         return (leftPart == rightPart) || (rightPart / SINGLE_DIGIT_MOVE == leftPart);
     }
 
-    static int descend(int number) {
+    private static int descend(int number) {
         int digitCount = Task2.countDigits(number);
         int pairsCount = (digitCount + 1) / 2;
         int[] digitPairs = new int[pairsCount];
