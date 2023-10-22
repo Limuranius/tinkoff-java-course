@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public final class Task6 {
-    static private final int KAPREKAR_NUMBER = 6174;
-    static private final int LOWER_BOUND = 1001;
-    static private final int UPPER_BOUND = 9999;
-    static private final int ALL_ONES = 1111;
+    private static final int KAPREKAR_NUMBER = 6174;
+    private static final int LOWER_BOUND = 1001;
+    private static final int UPPER_BOUND = 9999;
+    private static final int ALL_ONES = 1111;
 
     private Task6() {
     }

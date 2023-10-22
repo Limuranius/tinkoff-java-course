@@ -4,7 +4,7 @@ public final class Task8 {
     private Task8() {
     }
 
-    static final int[][] KNIGHT_DIRECTIONS = {
+    private static final int[][] KNIGHT_DIRECTIONS = {
         {-1, 2},
         {1, 2},
         {2, 1},
@@ -14,7 +14,7 @@ public final class Task8 {
         {-2, -1},
         {-2, 1}
     };
-    static final int BOARD_SIZE = 8;
+    private static final int BOARD_SIZE = 8;
 
     public static boolean knightBoardCapture(int[][] board) {
         for (int i = 0; i < BOARD_SIZE; i++) {
