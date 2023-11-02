@@ -1,17 +1,23 @@
 package edu.hw4;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public final class Tasks {
+    static final int MIN_AGE = 0;
+    static final int MAX_AGE = 100;
+    static final int MIN_HEIGHT = 0;
+    static final int MAX_HEIGHT = 500;
+    static final int MIN_WEIGHT = 0;
+    static final int MAX_WEIGHT = 9999;
+
     private Tasks() {
     }
 
@@ -130,10 +136,10 @@ public final class Tasks {
 
     public static List<Animal> task11(List<Animal> animals) {
         // Список животных, которые могут укусить (bites == true) и рост которых превышает 100 см
-        final int MIN_HEIGHT = 100;
+        final int min_h = 100;
         return animals
             .stream()
-            .filter(animal -> animal.bites() && animal.height() > MIN_HEIGHT)
+            .filter(animal -> animal.bites() && animal.height() > min_h)
             .toList();
     }
 
@@ -208,21 +214,15 @@ public final class Tasks {
         // Найти самую тяжелую рыбку в 2-х или более списках
         return Arrays.stream(animals)
             .flatMap(List::stream)
+            .filter(animal -> animal.type() == Animal.Type.FISH)
             .max(Comparator.comparingInt(Animal::weight))
             .orElseThrow();
     }
 
-    private static Set<ValidationError> validateAnimal(Animal animal) {
-        final int MIN_AGE = 0;
-        final int MAX_AGE = 100;
-        final int MIN_HEIGHT = 0;
-        final int MAX_HEIGHT = 500;
-        final int MIN_WEIGHT = 0;
-        final int MAX_WEIGHT = 1;
-
-        Set<ValidationError> errors = new HashSet<>();
+    private static List<ValidationError> validateAnimal(Animal animal) {
+        List<ValidationError> errors = new ArrayList<>();
         if (animal.name().isEmpty()) {
-            errors.add(new ValidationError(""));
+            errors.add(new ValidationError("Empty name"));
         }
         if (animal.age() < MIN_AGE || animal.age() > MAX_AGE) {
             errors.add(new ValidationError("Age must be in range [" + MIN_AGE + ": " + MAX_AGE + "]"));
@@ -236,7 +236,7 @@ public final class Tasks {
         return errors;
     }
 
-    public static Map<String, Set<ValidationError>> task19(List<Animal> animals) {
+    public static Map<String, List<ValidationError>> task19(List<Animal> animals) {
         // Животные, в записях о которых есть ошибки: вернуть имя и список ошибок
 
         return animals
@@ -250,7 +250,7 @@ public final class Tasks {
             );
     }
 
-    private static String errorsToStr(Set<ValidationError> errors) {
+    private static String errorsToStr(List<ValidationError> errors) {
         return errors
             .stream()
             .reduce(
