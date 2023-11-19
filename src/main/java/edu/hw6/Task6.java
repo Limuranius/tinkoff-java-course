@@ -1,7 +1,6 @@
 package edu.hw6;
 
 import java.io.IOException;
-import java.net.ConnectException;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.util.Map;
@@ -71,11 +70,11 @@ public final class Task6 {
                 protocolInfo = COMMON_PORTS.get(port);
             }
             sb.append(port)
-                .append("\t\t")
+                .append("\t")
                 .append(tcpStatus)
-                .append("\t\t")
+                .append("\t")
                 .append(udpStatus)
-                .append("\t\t")
+                .append("\t")
                 .append(protocolInfo)
                 .append("\n");
         }
